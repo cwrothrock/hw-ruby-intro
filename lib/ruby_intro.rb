@@ -36,19 +36,58 @@ end
 # Part 2
 
 def hello(name)
-  return "Hello, " + name
+  "Hello, " + name
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  #verify string starts with consonant (ignore case)
+  (s =~ /\A[b-df-hj-np-tv-z]/i) != nil ? (return true) : (return false)
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  #string must contain only 0s and 1s
+  if s !~ /^[01]*$/
+    return false
+  #string is 0 or ends in two 0s
+  elsif s == "0" || s.match(/^[01]*00$/)
+    return true 
+  #otherwise, false 
+  else
+    return false
+  end
 end
 
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  #constructors
+  def initialize(isbn, price)
+    if isbn == "" || price <= 0
+      raise ArgumentError
+    else
+      @isbn = isbn
+      @price = price
+    end
+  end
+  
+  #isbn getter and setter
+  def isbn
+    @isbn
+  end
+  def isbn=(isbn)
+    @isbn = isbn
+  end
+  
+  #price getter and setter
+  def price
+    @price
+  end
+  def price=(price)
+    @price = price
+  end
+  
+  #format string with 2 ending decimal places and lead with dollar sign
+  def price_as_string 
+    sprintf("$%.2f",price)
+  end
 end

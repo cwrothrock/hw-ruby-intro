@@ -2,7 +2,6 @@
 
 # Part 1
 
-#self-note: arrays have predefined summation function callable by using arr.sum
 def sum arr
   arr.inject(0,:+)
 end
@@ -15,6 +14,7 @@ end
 
 def sum_to_n? arr, n
   return false if arr.length <= 1
+  #check sum of each pair in array against n and return/increment as needed
   arr.combination(2).to_a.each { |pair| pair.sum == n ? (return true) : next }
   return false
 end
